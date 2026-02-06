@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Marta 💖</title>
+
+<style>
+body{
+margin:0;
+font-family:-apple-system,BlinkMacSystemFont,Arial;
+background:linear-gradient(160deg,#ffd6e7,#fff0f6,#ffe3ef);
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+overflow:hidden;
+}
+
+/* SOBRE */
+.sobre{
+width:90%;
+max-width:420px;
+height:260px;
+background:linear-gradient(135deg,#ff4d88,#ff7aa8);
+border-radius:22px;
+display:flex;
+justify-content:center;
+align-items:center;
+color:white;
+font-size:22px;
+cursor:pointer;
+box-shadow:0 15px 35px rgba(0,0,0,0.25);
+text-align:center;
+padding:20px;
+z-index:2;
+}
+
+/* CARTA */
+.carta{
+display:none;
+background:white;
+border-radius:24px;
+padding:24px;
+width:90%;
+max-width:420px;
+text-align:center;
+box-shadow:0 15px 35px rgba(0,0,0,0.2);
+position:relative;
+border:3px solid #ffd1e6;
+z-index:2;
+}
+
+h2{
+color:#ff3f7f;
+font-size:26px;
+margin-top:0;
+}
+
+p{
+font-size:18px;
+}
+
+/* FOTOS DECORACIÓN */
+.fotos{
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+margin-top:10px;
+}
+
+img{
+width:90px;
+height:90px;
+object-fit:cover;
+border-radius:14px;
+margin:6px;
+box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+
+/* BOTONES */
+button{
+width:100%;
+padding:16px;
+font-size:18px;
+margin-top:12px;
+border:none;
+border-radius:16px;
+position:relative;
+}
+
+.si{
+background:#ff3f7f;
+color:white;
+font-weight:bold;
+}
+
+.no{
+background:#e0e0e0;
+position:absolute;
+width:60%;
+left:20%;
+}
+
+/* RESPUESTA */
+#respuesta{
+margin-top:16px;
+font-size:20px;
+color:#ff3f7f;
+font-weight:bold;
+}
+
+/* CORAZONES */
+.corazon{
+position:absolute;
+font-size:22px;
+animation:flotar 10s linear infinite;
+opacity:0.5;
+}
+
+@keyframes flotar{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="sobre" onclick="abrirCarta()">
+Una pregunta... 💖
+</div>
+
+<div class="carta" id="carta">
+
+<h2>Miamor</h2>
+
+<p>
+¿Aceptas pasar el día 21 conmigo?💖 
+</p>
+
+<div class="fotos">
+  <img src="foto1.jpg">
+  <img src="foto2.jpg">
+</div>
+
+<button class="si" onclick="respuestaSi()">Si</button>
+<button class="no" id="btnNo">No</button>
+
+<div id="respuesta"></div>
+
+</div>
+
+<script>
+function abrirCarta(){
+document.querySelector(".sobre").style.display="none";
+document.getElementById("carta").style.display="block";
+}
+
+function respuestaSi(){
+document.getElementById("respuesta").innerText=
+"graciaaasss miamoor, el plan es sorpresa peero te voy a ir dejando pistas hasta el día 13, tu ponte igual de preciosa que siempre y ya. te amo";
+}
+
+let btnNo=document.getElementById("btnNo");
+btnNo.addEventListener("touchstart",moverNo);
+btnNo.addEventListener("mouseover",moverNo);
+
+function moverNo(){
+let x=Math.random()*60;
+let y=Math.random()*200;
+btnNo.style.left=x+"%";
+btnNo.style.top=y+"px";
+}
+
+/* corazones flotando */
+for(let i=0;i<25;i++){
+let c=document.createElement("div");
+c.className="corazon";
+c.innerText="💖";
+c.style.left=Math.random()*100+"vw";
+c.style.animationDuration=(6+Math.random()*6)+"s";
+document.body.appendChild(c);
+}
+</script>
+
+</body>
+</html>
